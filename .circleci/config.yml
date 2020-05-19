@@ -32,17 +32,7 @@ references:
       JAVA_OPTIONS: "-Xmx3200m -XX:+UnlockExperimentalVMOptions -XX:ParallelGCThreads=2 -XX:ConcGCThreads=2 -XX:ParallelGCThreads=2 -Djava.util.concurrent.ForkJoinPool.common.parallelism=2"
       GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx3200m" -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dorg.gradle.caching=false'
 
-jobs:
-  dependencies:
-    <<: *android_config
-    steps:
-      - checkout
-      - *restore_cache
-      - *chmod_permissions
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - *save_cache
+
 
   detekt:
     <<: *android_config
