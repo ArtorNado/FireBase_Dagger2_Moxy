@@ -79,18 +79,11 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
         presenter.onActivityResult(requestCode, resultCode, data, RC_SIGN_IN)
     }
 
-    override fun signIn() {}
-
     override fun openGoogleActivity() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    override fun signInWithPhoneNumber() {}
-
-    override fun goToRegisr() {}
-
-    override fun navigateToProfile() {}
 
     override fun navigateToRegistrPage() {
         Intent(this, RegistrationActivity::class.java).also {

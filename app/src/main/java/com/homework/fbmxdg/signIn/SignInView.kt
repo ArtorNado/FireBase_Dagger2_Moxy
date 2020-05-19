@@ -8,15 +8,7 @@ interface SignInView: MvpView {
 
     fun setResult(text: String)
 
-    fun signIn()
-
     fun openGoogleActivity()
-
-    fun signInWithPhoneNumber()
-
-    fun goToRegisr()
-
-    fun navigateToProfile()
 
     fun navigateToRegistrPage()
 

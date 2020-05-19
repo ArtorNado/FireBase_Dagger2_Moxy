@@ -44,20 +44,14 @@ class CriminalsFragment : MvpAppCompatFragment(), CriminalsView {
     override fun setAdapter(list: List<Criminal>) {
         rv_criminals_list.layoutManager = LinearLayoutManager(context)
         adapter = CriminalsAdapter(list) {
-
+            //some action
         }
         rv_criminals_list.adapter = adapter
     }
 
-    override fun updateList() {
-    }
-
-    override fun addData(criminal: Criminal) {
-
-    }
-
     override fun navigateToCreateCriminal() {
-        view?.findNavController()?.navigate(R.id.action_criminalsFragment_to_navigation_createCriminal)
+        view?.findNavController()
+            ?.navigate(R.id.action_criminalsFragment_to_navigation_createCriminal)
     }
 
 }
