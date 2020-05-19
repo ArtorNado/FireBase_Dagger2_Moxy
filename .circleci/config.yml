@@ -52,8 +52,6 @@ workflows:
   workflow:
     jobs:
       - detekt:
-          requires:
-            - dependencies
           filters:
             tags:
               only: /^.*/
