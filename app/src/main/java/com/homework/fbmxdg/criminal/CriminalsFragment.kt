@@ -60,4 +60,5 @@ class CriminalsFragment : MvpAppCompatFragment(), CriminalsView {
         view?.findNavController()?.navigate(R.id.action_criminalsFragment_to_navigation_createCriminal)
     }
 
+
 }

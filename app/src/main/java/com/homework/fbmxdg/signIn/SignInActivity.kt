@@ -6,21 +6,25 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
-import com.homework.fbmxdg.containerActivity.ContainerActivity
 import com.homework.fbmxdg.R
 import com.homework.fbmxdg.app.App
+import com.homework.fbmxdg.containerActivity.ContainerActivity
 import com.homework.fbmxdg.passwordLess.PasswordLessActivity
-import com.homework.fbmxdg.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_signin.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 import javax.inject.Provider
 
 class SignInActivity : MvpAppCompatActivity(), SignInView {
+
+    @Inject
+    lateinit var navigatioHolder: NavigatorHolder
+
+    private val navigator: Navigator = SupportAppNavigator(this, -1)
 
     @Inject
     lateinit var presenterProvider: Provider<SignInPresenter>
@@ -29,9 +33,6 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
         presenterProvider.get()
     }
     private lateinit var googleSignInClient: GoogleSignInClient
-
-    val db = Firebase.firestore
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.provideSignInFeatureComponent().inject(this)
@@ -42,8 +43,6 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-        val storage = Firebase.storage
-        val storageRef = storage.reference
         initClickListeners()
     }
 
@@ -92,11 +91,11 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
 
     override fun navigateToProfile() {}
 
-    override fun navigateToRegistrPage() {
+   /* override fun navigateToRegistrPage() {
         Intent(this, RegistrationActivity::class.java).also {
             startActivity(it)
         }
-    }
+    }*/
 
     override fun navigateToResetPage() {
         Intent(this, PasswordLessActivity::class.java).also {
@@ -108,6 +107,16 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
         Intent(this, ContainerActivity::class.java).also {
             startActivity(it)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigatioHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatioHolder.removeNavigator()
+        super.onPause()
     }
 
 

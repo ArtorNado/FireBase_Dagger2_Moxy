@@ -7,10 +7,18 @@ import com.homework.fbmxdg.app.App
 import kotlinx.android.synthetic.main.activity_password_less.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 import javax.inject.Provider
 
 class PasswordLessActivity : MvpAppCompatActivity(), PasswordLessView {
+
+    @Inject
+    lateinit var navigatioHolder: NavigatorHolder
+
+    private val navigator: Navigator = SupportAppNavigator(this, -1)
 
     @Inject
     lateinit var presenterProvider: Provider<PasswordLessPresenter>
@@ -37,4 +45,15 @@ class PasswordLessActivity : MvpAppCompatActivity(), PasswordLessView {
             findViewById(android.R.id.content), text, Snackbar.LENGTH_INDEFINITE
         ).show()
     }
+
+    override fun onResume() {
+        super.onResume()
+        navigatioHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatioHolder.removeNavigator()
+        super.onPause()
+    }
+
 }

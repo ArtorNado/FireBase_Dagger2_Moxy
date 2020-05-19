@@ -31,7 +31,6 @@ class PhoneServiceImpl @Inject constructor(
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e)
-                // [START_EXCLUDE silent]
                 verificationInProgress = false
                 // [END_EXCLUDE]
 

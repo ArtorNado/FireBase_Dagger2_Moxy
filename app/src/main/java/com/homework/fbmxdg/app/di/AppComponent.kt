@@ -11,7 +11,7 @@ import dagger.Component
 
 @ApplicationScope
 @Component(modules = [FirebaseModule::class, EmailModule::class, GoogleModule::class,
-    PhoneModule::class, DataBaseModule::class])
+    PhoneModule::class, DataBaseModule::class, NavigationModule::class])
 interface AppComponent {
 
     fun provideSignInFeatureComponent(): SignInFeatureComponent

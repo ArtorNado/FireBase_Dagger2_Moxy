@@ -18,8 +18,6 @@ interface SignInView: MvpView {
 
     fun navigateToProfile()
 
-    fun navigateToRegistrPage()
-
     fun navigateToResetPage()
 
     fun navigateToList()

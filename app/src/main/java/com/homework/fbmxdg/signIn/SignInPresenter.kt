@@ -1,6 +1,7 @@
 package com.homework.fbmxdg.signIn
 
 import android.content.Intent
+import com.homework.fbmxdg.screen.Screens
 import com.homework.fbmxdg.signIn.di.scope.SignInScope
 import com.homework.fbmxdg.signIn.repository.interfaces.SignInRepository
 import kotlinx.coroutines.Dispatchers
@@ -9,12 +10,14 @@ import kotlinx.coroutines.withContext
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import moxy.presenterScope
+import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 @SignInScope
 @InjectViewState
 class SignInPresenter @Inject constructor(
-    private val signInRepository: SignInRepository
+    private val signInRepository: SignInRepository,
+    private val router: Router
 ) : MvpPresenter<SignInView>() {
 
     fun onLogInClick(email: String, password: String) {
@@ -37,11 +40,7 @@ class SignInPresenter @Inject constructor(
     }
 
     fun registrButtonClick() {
-        presenterScope.launch {
-            withContext(Dispatchers.IO) {
-                viewState.navigateToRegistrPage()
-            }
-        }
+        router.navigateTo(Screens.RegistrationScreen)
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?, rcSignIn: Int) {
@@ -78,11 +77,7 @@ class SignInPresenter @Inject constructor(
     }
 
     fun resetButtonClick() {
-        presenterScope.launch {
-            withContext(Dispatchers.IO) {
-                viewState.navigateToResetPage()
-            }
-        }
+        router.navigateTo(Screens.PasswordLessScreen)
     }
 
 }
