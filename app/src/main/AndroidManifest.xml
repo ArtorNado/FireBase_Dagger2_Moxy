@@ -10,13 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".containerForNui.ContainerNuiActivity"
+            android:label="@string/title_activity_container_nui"
+            android:theme="@style/AppTheme"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7102171154252511~2952592786"/>
+            android:value="ca-app-pub-7102171154252511~2952592786" />
+
         <activity
             android:name=".containerActivity.ContainerActivity"
             android:label="@string/title_activity_container"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".passwordLess.PasswordLessActivity" />
         <activity android:name=".registration.RegistrationActivity" />
         <activity android:name=".signIn.SignInActivity">

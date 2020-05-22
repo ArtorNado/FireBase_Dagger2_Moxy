@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.homework.fbmxdg.containerActivity.ContainerActivity
+import com.homework.fbmxdg.containerForNui.ContainerNuiActivity
 import com.homework.fbmxdg.criminalList.CreateCriminalFragment
 import com.homework.fbmxdg.criminalList.CriminalsFragment
 import com.homework.fbmxdg.passwordLess.PasswordLessActivity
@@ -33,6 +34,11 @@ object Screens {
     object PasswordLessScreen : SupportAppScreen() {
         override fun getActivityIntent(context: Context): Intent =
             Intent(context, PasswordLessActivity::class.java)
+    }
+
+    object ContainerNuiScreen : SupportAppScreen() {
+        override fun getActivityIntent(context: Context): Intent =
+            Intent(context, ContainerNuiActivity::class.java)
     }
 
 }

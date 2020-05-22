@@ -22,8 +22,6 @@ class CreateCriminalPresenter @Inject constructor(
         presenterScope.launch {
             withContext(Dispatchers.IO) {
                 criminalsRepository.setData(criminal, collection)
-            }.let {
-                viewState.navigateBack()
             }
         }
     }

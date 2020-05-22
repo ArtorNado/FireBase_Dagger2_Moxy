@@ -9,4 +9,8 @@
         android:id="@+id/action_crash"
         android:title="crash"
         app:showAsAction="always|collapseActionView" />
+    <item
+        android:id="@+id/next_container"
+        android:title="next container"
+        app:showAsAction="always|collapseActionView" />
 </menu>

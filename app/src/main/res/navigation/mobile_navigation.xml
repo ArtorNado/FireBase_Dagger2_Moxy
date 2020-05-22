@@ -3,20 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/criminalsFragment">
-
+    app:startDestination="@id/navigation_home">
     <fragment
-        android:id="@+id/navigation_createCriminal"
+        android:id="@+id/navigation_dashboard"
+        android:name="com.homework.fbmxdg.containerForNui.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_goToRegistrFragment"
+            app:destination="@id/goToListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.homework.fbmxdg.containerForNui.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.homework.fbmxdg.containerForNui.ui.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_goToAddFragment"
+            app:destination="@id/goToAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goToListFragment"
+        android:name="com.homework.fbmxdg.containerForNui.GoToListFragment"
+        android:label="go_to_list_fragment"
+        tools:layout="@layout/go_to_list_fragment" >
+        <action
+            android:id="@+id/action_goToListFragment_to_criminalsFragment"
+            app:destination="@id/criminalsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goToAddFragment"
+        android:name="com.homework.fbmxdg.containerForNui.GoToAddFragment"
+        android:label="go_to_add_fragment"
+        tools:layout="@layout/go_to_add_fragment" >
+        <action
+            android:id="@+id/action_goToAddFragment_to_createCriminalFragment"
+            app:destination="@id/createCriminalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createCriminalFragment"
         android:name="com.homework.fbmxdg.criminalList.CreateCriminalFragment"
-        android:label="CreateCriminal" />
+        android:label="CreateCriminalFragment" />
     <fragment
         android:id="@+id/criminalsFragment"
         android:name="com.homework.fbmxdg.criminalList.CriminalsFragment"
-        android:label="activity_criminals"
-        tools:layout="@layout/criminals_fragment" >
-        <action
-            android:id="@+id/action_criminalsFragment_to_navigation_createCriminal"
-            app:destination="@id/navigation_createCriminal" />
-    </fragment>
-
+        android:label="criminals_fragment"
+        tools:layout="@layout/criminals_fragment" />
 </navigation>

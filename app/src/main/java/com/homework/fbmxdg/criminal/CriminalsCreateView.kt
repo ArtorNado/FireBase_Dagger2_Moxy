@@ -6,7 +6,4 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @CriminalsScope
 @AddToEndSingle
-interface CriminalsCreateView: MvpView {
-
-    fun navigateBack()
-}
+interface CriminalsCreateView: MvpView

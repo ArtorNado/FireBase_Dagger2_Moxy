@@ -25,7 +25,7 @@ class SignInPresenter @Inject constructor(
             withContext(Dispatchers.IO) {
                 signInRepository.singIn(email, password)
             }.addOnCompleteListener() { task ->
-                if (task.isSuccessful) viewState.navigateToList()
+                if (task.isSuccessful) router.navigateTo(Screens.ContainerScreen)
                 else viewState.setResult(task.exception.toString())
             }
         }
@@ -48,7 +48,7 @@ class SignInPresenter @Inject constructor(
             withContext(Dispatchers.IO) {
                 signInRepository.onActivityResult(requestCode, resultCode, data, rcSignIn)
             }.addOnCompleteListener() { task ->
-                if (task.isSuccessful) viewState.navigateToList()
+                if (task.isSuccessful) router.navigateTo(Screens.ContainerScreen)
                 else viewState.setResult(task.exception.toString())
             }
         }
@@ -59,11 +59,8 @@ class SignInPresenter @Inject constructor(
             withContext(Dispatchers.IO) {
                 signInRepository.verifyPhoneNumberWithCode(code)
             }.addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    viewState.navigateToList()
-                } else {
-                    viewState.setResult(task.exception.toString())
-                }
+                if (task.isSuccessful) router.navigateTo(Screens.ContainerScreen)
+                else viewState.setResult(task.exception.toString())
             }
         }
     }

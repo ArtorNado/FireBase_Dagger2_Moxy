@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
 import com.homework.fbmxdg.R
 import com.homework.fbmxdg.app.App
 import com.homework.fbmxdg.criminalList.repository.CreateCriminalPresenter
@@ -23,8 +22,6 @@ class CreateCriminalFragment : MvpAppCompatFragment(), CriminalsCreateView {
 
     private val presenter: CreateCriminalPresenter by moxyPresenter {
         presenterProvider.get()
-
-
     }
 
     override fun onCreateView(
@@ -35,7 +32,6 @@ class CreateCriminalFragment : MvpAppCompatFragment(), CriminalsCreateView {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         App.appComponent.provideCriminalsFeatureComponent().injectCreateCriminal(this)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,10 +49,6 @@ class CreateCriminalFragment : MvpAppCompatFragment(), CriminalsCreateView {
                 ), "Criminals"
             )
         }
-    }
-
-    override fun navigateBack() {
-        NavHostFragment.findNavController(this).popBackStack()
     }
 
 

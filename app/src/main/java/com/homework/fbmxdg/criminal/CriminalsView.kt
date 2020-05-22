@@ -8,10 +8,4 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface CriminalsView : MvpView {
 
     fun setAdapter(list: List<Criminal>)
-
-    fun updateList()
-
-    fun addData(criminal: Criminal)
-
-    fun navigateToCreateCriminal()
 }

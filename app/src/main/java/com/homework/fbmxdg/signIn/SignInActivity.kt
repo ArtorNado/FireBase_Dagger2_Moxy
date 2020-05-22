@@ -8,8 +8,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
 import com.homework.fbmxdg.R
 import com.homework.fbmxdg.app.App
-import com.homework.fbmxdg.containerActivity.ContainerActivity
-import com.homework.fbmxdg.passwordLess.PasswordLessActivity
 import kotlinx.android.synthetic.main.activity_signin.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -78,35 +76,10 @@ class SignInActivity : MvpAppCompatActivity(), SignInView {
         presenter.onActivityResult(requestCode, resultCode, data, RC_SIGN_IN)
     }
 
-    override fun signIn() {}
 
     override fun openGoogleActivity() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    override fun signInWithPhoneNumber() {}
-
-    override fun goToRegisr() {}
-
-    override fun navigateToProfile() {}
-
-   /* override fun navigateToRegistrPage() {
-        Intent(this, RegistrationActivity::class.java).also {
-            startActivity(it)
-        }
-    }*/
-
-    override fun navigateToResetPage() {
-        Intent(this, PasswordLessActivity::class.java).also {
-            startActivity(it)
-        }
-    }
-
-    override fun navigateToList() {
-        Intent(this, ContainerActivity::class.java).also {
-            startActivity(it)
-        }
     }
 
     override fun onResume() {

@@ -2,8 +2,8 @@ package com.homework.fbmxdg.criminalList
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.homework.fbmxdg.R
 import com.homework.fbmxdg.app.App
@@ -36,8 +36,15 @@ class CriminalsFragment : MvpAppCompatFragment(), CriminalsView {
         super.onAttach(context)
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.e("RESUME", "RESUME")
+        presenter.getData("Criminals")
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.e("VIEW_CREATED", "VIEW_CREATED")
         presenter.getData("Criminals")
     }
 
@@ -47,17 +54,6 @@ class CriminalsFragment : MvpAppCompatFragment(), CriminalsView {
 
         }
         rv_criminals_list.adapter = adapter
-    }
-
-    override fun updateList() {
-    }
-
-    override fun addData(criminal: Criminal) {
-
-    }
-
-    override fun navigateToCreateCriminal() {
-        view?.findNavController()?.navigate(R.id.action_criminalsFragment_to_navigation_createCriminal)
     }
 
 
